@@ -11,28 +11,53 @@
     <div class="container my-5">
         <h1 class="text-center">Know Your Financial Acitivity</h1>
         <div class="row mt-5">
-            <div class="col-lg-6 col-12 my-5">
+            <div class="col-lg-6 my-5">
                 <img class="img-fluid" src="image.png" alt="">
             </div>
-            <div class="col-lg-6 col-12 text-center bg-light">
+            <div class="col-lg-6 text-center bg-light">
                 <h3 class="text-center">Income</h3>
-                <p>Income : <input class="border border-1 rounded" type="text"></p>
+                <p>Income : <input id="income" class="border border-1 rounded" type="text"></p>
                 <h3 class="text-center">Expenses</h3>
-                <p>Food : <input class="border border-1 rounded" type="text"></p>
-                <p>Rent : <input class="border border-1 rounded" type="text"></p>
-                <p>Clothes : <input class="border border-1 rounded" type="text"></p>
-                <p><button class="btn btn-primary px-5">Calculate</button></p>
-                <h3>Total Expenses : <span>500</span></h3>
-                <h3>Balance : <span>500</span></h3>
+                <p>Food : <input id="food" class="border border-1 rounded" type="text"></p>
+                <p>Rent : <input id="rent" class="border border-1 rounded" type="text"></p>
+                <p>Clothes : <input id="clothes" class="border border-1 rounded" type="text"></p>
+                <p><button id="calc-btn" class="btn btn-primary px-5">Calculate</button></p>
+                <h3>Total Expenses : <span id="expenseTotal">000</span></h3>
+                <h3>Balance : <span id="balanceTotal">000</span></h3>
                 <div class="row my-3 align-items-center">
-                    <div class="col-lg-4 col-12 ms-5 my-3">Save : <input class="border border-1 rounded mx-3 w-50" type="text" name="" id=""> % </div>
-                    <div class="col-lg-6 col-12"><button class="btn btn-primary mx-3 w-50">Save</button></div>
+                    <div class="col-lg-4 col-12 ms-5 my-3">Save : <input id="savingPercentage" class="border border-1 rounded mx-3" type="text" name="" id=""> % </div>
+                    <div class="col-lg-6 col-12"><button id="save-btn" class="btn btn-primary mx-3 w-50">Save</button></div>
                 </div>
-                <h3>Saving Ammount : <span>500</span></h3>
-                <h3>Remaining Balance : <span>500</span></h3>
+                <h3>Saving Ammount : <span id="saving-ammount">000</span></h3>
+                <h3>Remaining Balance : <span id="remaing-balance">000</span></h3>
             </div>
         </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        const income = document.getElementById('income');
+        const food = document.getElementById('food');
+        const rent = document.getElementById('rent');
+        const clothes = document.getElementById('clothes');
+        function calculation(){
+            const incomeAmmount = parseFloat(income.value);
+            const totalExpenses = parseFloat(food.value) + parseFloat(rent.value) + parseFloat(clothes.value);
+            const balance = incomeAmmount - totalExpenses;
+            document.getElementById('expenseTotal').innerText = totalExpenses;
+            document.getElementById('balanceTotal').innerText = balance;
+        }
+        document.getElementById('calc-btn').addEventListener('click', function(){
+            calculation();
+        });
+        const savingPercentage = document.getElementById('savingPercentage');
+        document.getElementById('save-btn').addEventListener('click', function() {
+            calculation();
+            const balance = parseFloat(income.value) - (parseFloat(food.value) + parseFloat(rent.value) + parseFloat(clothes.value));
+            const savingPercentageValue = parseFloat(savingPercentage.value);
+            const savingAmmount = parseFloat(income.value) * (savingPercentageValue / 100);
+            document.getElementById('saving-ammount').innerText = savingAmmount;
+            document.getElementById('remaing-balance').innerText = balance - savingAmmount;
+        });
+    </script>
 </body>
 </html>
