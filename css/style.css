@@ -1,3 +1,4 @@
+/* font size will be large in larger srceen */
 @media screen and (min-width: 768px) {
     .custom-font{
         font-size:60px;

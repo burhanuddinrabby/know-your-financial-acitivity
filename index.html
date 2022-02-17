@@ -11,10 +11,13 @@
 <body>
     <div class="container my-5">
         <h1 class="text-center fw-bold custom-font">Know Your <span class="text-warning">Financial Acitivity</span></h1>
+        <!-- content -->
         <div class="row mt-5">
+            <!-- image container -->
             <div class="col-lg-6">
                 <img class="img-fluid" src="image.png" alt="">
             </div>
+            <!-- form container -->
             <div class="col-lg-6 text-center bg-light">
                 <h3 class="text-center">Income</h3>
                 <p>Income : <input id="income" class="border border-1 rounded inp" type="number"></p>
@@ -23,6 +26,7 @@
                 <p>Rent : <input id="rent" class="border border-1 rounded inp" type="number"></p>
                 <p>Clothes : <input id="clothes" class="border border-1 rounded inp" type="number"></p>
                 <p><button id="calc-btn" class="btn btn-primary px-5">Calculate</button></p>
+                <!-- error msg container -->
                 <h2><span id="error-msg" class="text-danger"></span></h2>
                 <h3>Total Expenses : <span id="expenseTotal">000</span></h3>
                 <h3>Balance : <span id="balanceTotal">000</span></h3>
@@ -30,6 +34,7 @@
                     <div class="col-lg-8 col-12 my-3">Save : <input id="savingPercentage" class="border border-1 rounded inp mx-3 w-50" type="number" name="" id=""> % </div>
                     <div class="col-lg-4 col-12"><button id="save-btn" class="btn btn-primary mx-3 w-50">Save</button></div>
                 </div>
+                <!-- error message container -->
                 <h3 id="error-msg-saving" class="text-danger"></h3>
                 <h3>Saving Ammount : <span id="saving-ammount">000</span></h3>
                 <h3>Remaining Balance : <span id="remaing-balance">000</span></h3>
