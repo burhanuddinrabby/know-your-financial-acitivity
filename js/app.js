@@ -40,10 +40,12 @@ function calculation(){
         }
     }
 }
+
 //calculate the balance and expenses
 document.getElementById('calc-btn').addEventListener('click', function(){
     calculation();
 });
+
 //savings percentage and calculate the balance
 document.getElementById('save-btn').addEventListener('click', function() {
     const balance = calculation();
