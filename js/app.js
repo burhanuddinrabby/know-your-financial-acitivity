@@ -9,16 +9,19 @@ const inputs = document.getElementsByClassName('inp');
 //calculation cost 
 function calculation(){
     //if user leaves an empty input
-    if(income.value == '' || food.value == '' || rent.value == '' || clothes.value == ''/*  || savingPercentage.value == '' */){
+    if(income.value == '' || food.value == '' || rent.value == '' || clothes.value == ''){
         document.getElementById('error-msg').innerText = 'Input type cannot be empty';
+        document.getElementById('expenseTotal').innerText = '';
     }
     //when income is not negative 
     else if(income.value < 0){
         document.getElementById('error-msg').innerText = 'Income cannot be negative';
+        document.getElementById('expenseTotal').innerText = '';
     }
     //cost cannot be negative
-    else if(food.value < 0 || rent.value < 0 || clothes.value < 0 /* || savingPercentage.value < 0 */){
+    else if(food.value < 0 || rent.value < 0 || clothes.value < 0){
         document.getElementById('error-msg').innerText = 'Cost cannot be negative';
+        document.getElementById('expenseTotal').innerText = '';
     }else{
         const incomeAmmount = parseFloat(income.value);
         const totalExpenses = parseFloat(food.value) + parseFloat(rent.value) + parseFloat(clothes.value);
@@ -45,7 +48,7 @@ document.getElementById('calc-btn').addEventListener('click', function(){
 document.getElementById('save-btn').addEventListener('click', function() {
     const balance = calculation();
     //if user leaves an empty input
-    if (income.value != '' && income.value > 0 && food.value >= 0 && rent.value >= 0 && clothes.value >= 0 && savingPercentage.value >= 0 && balance >= 0) {
+    if (income.value != '' && income.value > 0 && food.value >= 0 && rent.value >= 0 && clothes.value >= 0 && balance >= 0) {
         const savingPercentageValue = parseFloat(savingPercentage.value);
         const savingAmmount = parseFloat(income.value) * (savingPercentageValue / 100);
         //when saving ammount is greater than balance
@@ -54,8 +57,18 @@ document.getElementById('save-btn').addEventListener('click', function() {
             document.getElementById('saving-ammount').innerText = Math.round(savingAmmount);
             document.getElementById('saving-ammount').style.color = 'red';
             document.getElementById('remaing-balance').innerText = '000';
-        }else if(savingPercentage.value < 0){
+        }
+        //when user leave the percent field empty but clicks save button
+        else if(savingPercentage.value == ''){
+            document.getElementById('error-msg-saving').innerText = 'Percent cannot be empty';
+            document.getElementById('saving-ammount').innerText = '';
+            document.getElementById('remaing-balance').innerText = '';
+        }
+        //when saving percentage is negative
+        else if(savingPercentage.value < 0){
             document.getElementById('error-msg-saving').innerText = 'You cannot be save negative percentage of ammount';
+            document.getElementById('saving-ammount').innerText = '';
+            document.getElementById('remaing-balance').innerText = '';
         }
         else{
             document.getElementById('error-msg-saving').innerText = '';
