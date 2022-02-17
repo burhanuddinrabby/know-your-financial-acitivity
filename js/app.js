@@ -8,16 +8,15 @@ function calculation(){
     const balance = incomeAmmount - totalExpenses;
     document.getElementById('expenseTotal').innerText = totalExpenses;
     document.getElementById('balanceTotal').innerText = balance;
+    return balance;
 }
 document.getElementById('calc-btn').addEventListener('click', function(){
     calculation();
 });
 const savingPercentage = document.getElementById('savingPercentage');
 document.getElementById('save-btn').addEventListener('click', function() {
-    calculation();
-    const balance = parseFloat(income.value) - (parseFloat(food.value) + parseFloat(rent.value) + parseFloat(clothes.value));
     const savingPercentageValue = parseFloat(savingPercentage.value);
     const savingAmmount = parseFloat(income.value) * (savingPercentageValue / 100);
     document.getElementById('saving-ammount').innerText = savingAmmount;
-    document.getElementById('remaing-balance').innerText = balance - savingAmmount;
+    document.getElementById('remaing-balance').innerText = calculation() - savingAmmount;
 });
